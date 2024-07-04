@@ -1,0 +1,27 @@
+<div id="id01" class="modal">
+
+    <form [formGroup]="employeeForm" (ngSubmit)="login(employeeForm.value)" class="modal-content animate"
+        style="width: 30%;">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                title="Close Modal">&times;</span>
+            <img src="../assets/profile.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <!-- <label for="uname"><b>Email</b></label> -->
+            <input type="email" placeholder="Enter Email" formControlName="email" required>
+            <!-- <label for="psw"><b>Password</b></label> -->
+            <input type="password" placeholder="Enter Password" formControlName="password" required>
+
+            <button class="bt" type="submit">Login</button>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'"
+                class="cancelbtn bt">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+
+</div>

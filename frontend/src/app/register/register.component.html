@@ -1,0 +1,38 @@
+<div id="id012" class="modal">
+
+    <form [formGroup]="employeeForm" (ngSubmit)="register(employeeForm.value)" class="modal-content animate"
+        style="width: 30%;">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id012').style.display='none'" class="close"
+                title="Close Modal">&times;</span>
+            <img src="../assets/profile.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <!-- <label for="uname"><b>ID</b></label> -->
+            <input type="text" placeholder="Enter Name" formControlName="name" required>
+            <input type="email" placeholder="Enter Email" formControlName="email" required>
+            <input type="password" placeholder="Enter Password" formControlName="password" required>
+            <input type="number" placeholder="Enter Mobile" formControlName="mobile" required>
+
+            <select formControlName="country" required>
+                <option value="">Select Country</option>
+                <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+            </select>
+
+            <select formControlName="state" required>
+                <option value="">Select State</option>
+                <option *ngFor="let state of selectedStates" [value]="state">{{ state }}</option>
+            </select>
+
+            <button class="bt" type="submit">Register</button>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id012').style.display='none'"
+                class="cancelbtn bt">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+
+</div>

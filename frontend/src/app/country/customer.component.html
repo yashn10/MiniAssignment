@@ -1,0 +1,61 @@
+<h2 style="margin-top: 50px; text-align: center;">Country List</h2>
+<button type="button" class="btn btn-success mt-3 mb-3" (click)="openModal(template1)">Add
+    Country</button>
+
+
+<ng-template #template1>
+    <form [formGroup]="countryForm" (ngSubmit)="iseditclicked1 ? update() : submit(countryForm.value)">
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">{{ iseditclicked1 ? 'Edit Country' : 'Add Country' }}</h4>
+            <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+                <span aria-hidden="true" class="visually-hidden">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group text-center">
+                <img src="../assets/profile.png" style="width: 100px;">
+            </div>
+            <div class="form-group">
+                <label class="form-label" style="font-weight: 700;">ID:</label>
+                <i class="fa fa-user icon"></i>
+                <input type="number" class="form-control" placeholder="Enter Country ID" name="id" formControlName="id">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" style="font-weight: 700;">Name:</label>
+                <i class="fa fa-user icon"></i>
+                <input type="text" class="form-control" placeholder="Enter Country Name" name="name"
+                    formControlName="name">
+            </div>
+
+            <button type="button" class="btn" style="background-color: #cbc6c6; border: none;"
+                (click)="clear()">Clear</button>
+            <button type="submit" class="btn btn-success ml-3">{{ iseditclicked1 ? 'Update' : 'Submit' }}</button>
+        </div>
+    </form>
+</ng-template>
+
+
+<table class="table table-hover text-center" style="margin-top: 10px; height: 400px;">
+    <thead>
+        <tr style="text-align: center;">
+            <th>Country ID</th>
+            <th>Country Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody style="overflow-y:auto; height:300px;">
+        <tr *ngFor="let data of countrylist; let i = index">
+            <td style="width: 270px;">{{data.id}}</td>
+            <td style="width: 270px;">{{data.name}}</td>
+            <td style="width: 260px;">
+                <button type="button" class="btn" (click)="openModal(template1)" (click)=" edit(data._id)"><img
+                        src="../assets/edit (1).png" style="width: 30px;">
+                </button>
+                <button type="button" class="btn" (click)="delete(data._id)"><img src="../assets/delete (3).png"
+                        style="width: 30px;"></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<hr>
